@@ -7,16 +7,32 @@
 </head>
 <body>
     <h1>Stone, Paper & Scissors Game</h1>
+    
     <div class="choices">
-        <div class="choice">
+        <div class="choice" id="rock">
             <img src="./assets/rock.png" alt="rock_img">
         </div>
-        <div class="choice">
+        <div class="choice" id="paper">
             <img src="./assets/paper.png" alt="paper_img">
         </div>
-        <div class="choice">
+        <div class="choice" id="scissor">
             <img src="./assets/scissors.png" alt="Scissor_img">
         </div>
+    </div>
+
+    <div class="score_board">
+        <div class="score">
+            <p id="user-score">0</p>
+            <p>You</p>
+        </div>
+        <div class="score">
+            <p id="computer-score">0</p>
+            <p>Computer</p>
+        </div>
+    </div>
+
+    <div class="msg-container">
+        <p id="msg">Play your move</p>
     </div>
 </body>
 </html>
