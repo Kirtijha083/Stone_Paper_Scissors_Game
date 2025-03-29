@@ -2,6 +2,8 @@ let userScore = 0;
 let compScore = 0;
 
 const choices = document.querySelectorAll(".choice");
+const msg = document.querySelector("#msg");
+
 
 const genCompChoice = () => {
   const option = ["rock", "paper", "scissors"];
@@ -14,14 +16,17 @@ const genCompChoice = () => {
 // function draw game
 const drawGame = () => {
   console.log("game was draw.");
+    msg.innerText = "Game was draw. Play again!"
 };
 
 // show-winnig function
 const showWiner = (userWin) => {
     if(userWin){
         console.log("You win!");
+        msg.innerText = "You win!!"
     }else{
         console.log("You lose!");
+          msg.innerText = "You lose."
     }
 }
 
