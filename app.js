@@ -3,7 +3,8 @@ let compScore = 0;
 
 const choices = document.querySelectorAll(".choice");
 const msg = document.querySelector("#msg");
-
+const userScorePara = document.querySelector("#user-score");
+const compScorePara = document.querySelector("#computer-score");
 
 const genCompChoice = () => {
   const option = ["rock", "paper", "scissors"];
@@ -15,45 +16,51 @@ const genCompChoice = () => {
 
 // function draw game
 const drawGame = () => {
-  console.log("game was draw.");
-    msg.innerText = "Game was draw. Play again!"
+  //   console.log("game was draw.");
+  msg.innerText = "Game was draw. Play again!";
+  msg.style.backgroundColor = "#081b31";
 };
 
 // show-winnig function
-const showWiner = (userWin) => {
-    if(userWin){
-        console.log("You win!");
-        msg.innerText = "You win!!"
-    }else{
-        console.log("You lose!");
-          msg.innerText = "You lose."
-    }
-}
-
+const showWiner = (userWin, userChoice, compChoice) => {
+  if (userWin) {
+    userScore++;
+    userScorePara.innerText = userScore;
+    // console.log("You win!");
+    msg.innerText = `You win!! Your ${userChoice} beats ${compChoice}`;
+    msg.style.backgroundColor = "green";
+  } else {
+    compScore++;
+    compScorePara.innerText = compScore;
+    // console.log("You lose!");
+    msg.innerText = `You lose. ${compChoice} beats your ${userChoice}`;
+    msg.style.backgroundColor = "red";
+  }
+};
 
 const playGame = (userChoice) => {
-  console.log("user choice = ", userChoice);
+  //   console.log("user choice = ", userChoice);
   // then generate computers choice
   const compChoice = genCompChoice();
-  console.log("computer choice = ", compChoice);
+  //   console.log("computer choice = ", compChoice);
 
   // logic for draw game
   if (userChoice === compChoice) {
     // draw game
     drawGame();
-  }else{
+  } else {
     let userWin = true;
-    if(userChoice === "rock"){
-        // scissors, paper
-        userWin = compChoice === "paper" ? false : true;
-    }else if(userChoice === "paper"){
-        // rock, scissor
-        userWin = compChoice === "scissors" ? false :true;
-    }else{
-        // rock, paper
-        userWin = compChoice === "rock" ? false :true;
+    if (userChoice === "rock") {
+      // scissors, paper
+      userWin = compChoice === "paper" ? false : true;
+    } else if (userChoice === "paper") {
+      // rock, scissor
+      userWin = compChoice === "scissors" ? false : true;
+    } else {
+      // rock, paper
+      userWin = compChoice === "rock" ? false : true;
     }
-    showWiner(userWin);
+    showWiner(userWin, userChoice, compChoice);
   }
 };
 
