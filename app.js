@@ -16,6 +16,16 @@ const drawGame = () => {
   console.log("game was draw.");
 };
 
+// show-winnig function
+const showWiner = (userWin) => {
+    if(userWin){
+        console.log("You win!");
+    }else{
+        console.log("You lose!");
+    }
+}
+
+
 const playGame = (userChoice) => {
   console.log("user choice = ", userChoice);
   // then generate computers choice
@@ -26,6 +36,19 @@ const playGame = (userChoice) => {
   if (userChoice === compChoice) {
     // draw game
     drawGame();
+  }else{
+    let userWin = true;
+    if(userChoice === "rock"){
+        // scissors, paper
+        userWin = compChoice === "paper" ? false : true;
+    }else if(userChoice === "paper"){
+        // rock, scissor
+        userWin = compChoice === "scissors" ? false :true;
+    }else{
+        // rock, paper
+        userWin = compChoice === "rock" ? false :true;
+    }
+    showWiner(userWin);
   }
 };
 
